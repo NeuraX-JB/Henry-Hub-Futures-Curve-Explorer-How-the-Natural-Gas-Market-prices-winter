@@ -1,0 +1,2 @@
+# The storage ledger verifies the SHA-256 digest of EIA's original bulletin bytes.
+lab/storage/ledger/*-release.csv -text

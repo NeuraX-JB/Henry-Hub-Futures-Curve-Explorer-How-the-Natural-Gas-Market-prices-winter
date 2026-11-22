@@ -1,0 +1,117 @@
+name: Refresh natural gas research
+
+on:
+  schedule:
+    - cron: '17 20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  deployments: read
+
+concurrency:
+  group: natural-gas-research-publish
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Check out main and the publishing history
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Preserve both branch histories
+        run: |
+          git fetch --no-tags origin refs/heads/gh-pages:refs/remotes/origin/gh-pages
+          git merge --ff-only origin/gh-pages
+          test -s index.html
+          test -s lab/index.html
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+
+      - name: Refresh EIA and NOAA observations, forecasts and API
+        run: |
+          python -m pip install --disable-pip-version-check xlrd==2.0.2 numpy==2.3.5
+          python lab/data/refresh.py
+          python -m unittest discover -s lab/data -p 'test_*.py'
+          python lab/storage/refresh.py
+          python -m unittest discover -s lab/storage -p 'test_*.py'
+          python lab/api/build_api.py
+          python -m unittest discover -s lab/api -p 'test_*.py'
+          python lab/industrial/refresh.py
+          node --test lab/industrial/model.test.cjs
+
+      - name: Add any missing recent 00 UTC weather runs
+        id: weather
+        continue-on-error: true
+        working-directory: lab/weather
+        run: |
+          dates=()
+          for offset in 1 0; do
+            day=$(date -u --date="$offset days ago" +%F)
+            if ! jq -e --arg init "${day}T00:00:00Z" 'any(.runs[]; .init == $init)' runs.json >/dev/null; then
+              dates+=("$day")
+            fi
+          done
+          if (( ${#dates[@]} )); then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq python3-gdal python3-numpy
+            /usr/bin/python3 research/build_runs.py --merge --dates "${dates[@]}" --workers 6
+          fi
+          node --test research/weather.test.js
+
+      - name: Retain the previous weather archive if ingestion failed
+        if: steps.weather.outcome == 'failure'
+        run: |
+          git restore -- lab/weather/runs.json
+          node --test lab/weather/research/weather.test.js
+          echo '::warning::Weather archive extension failed. The last validated runs remain on the site.'
+          echo 'Weather archive extension failed. Preserved the last validated runs.' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit validated data and published forecast records
+        run: |
+          git diff --exit-code HEAD -- lab/storage/ledger
+          git add -- lab/data/{storage.csv,weather.csv,spot.csv,manifest.json} \
+            lab/storage/{state.json,backtest.csv,ledger} lab/api/v1/ \
+            lab/industrial/market.js lab/weather/runs.json
+          # EIA publishes CRLF CSV bulletins. Keep the exact downloaded bytes for audit hashes.
+          git diff --cached --check -- . ':(exclude)lab/storage/ledger/*-release.csv'
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m "Refresh natural gas observations and forecast ledger"
+          fi
+          git push --atomic origin HEAD:refs/heads/main HEAD:refs/heads/gh-pages
+
+      # Pages' automatic branch build does not run after a push made with GITHUB_TOKEN.
+      - name: Request a build and verify the public data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          endpoint="repos/$GITHUB_REPOSITORY/pages"
+          settings=$(gh api "$endpoint")
+          jq -e '.source.branch == "gh-pages" and .source.path == "/"' <<< "$settings" >/dev/null
+          site=$(jq -er '.html_url' <<< "$settings")
+          gh api --method POST "$endpoint/builds" --silent
+          for attempt in $(seq 1 40); do
+            url="${site%/}/lab/data/manifest.json?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$attempt"
+            if curl --fail --silent --location --max-time 12 --output "$RUNNER_TEMP/live-manifest.json" "$url" &&
+                cmp --silent lab/data/manifest.json "$RUNNER_TEMP/live-manifest.json"; then
+              echo "Published revision $(git rev-parse --short HEAD) at ${site%/}/lab/." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            sleep 12
+          done
+          echo '::error::Pages did not serve this refresh within the verification window.'
+          exit 1
