@@ -1,6 +1,6 @@
 # Henry Hub Research
 
-**Independent natural gas market research · Data analytics · Energy fundamentals**
+**John Barreto · Independent natural gas market research · Data analytics · Energy fundamentals**
 
 Independent research into the U.S. natural gas market, combining energy fundamentals, meteorology, quantitative analysis, industrial fuel economics and data engineering.
 

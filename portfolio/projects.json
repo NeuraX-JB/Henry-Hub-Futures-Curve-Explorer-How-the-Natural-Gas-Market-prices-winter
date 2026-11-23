@@ -1,0 +1,69 @@
+{
+  "owner": "NeuraX-JB",
+  "display_name": "John Barreto",
+  "source_repository": "NeuraX-JB/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter",
+  "projects": [
+    {
+      "name": "henry-hub-storage-forecaster",
+      "title": "Henry Hub Storage Forecaster",
+      "description": "Weather-adjusted U.S. natural gas storage nowcasts, chronological backtests and a timestamped forecast ledger.",
+      "paths": [
+        "lab/storage",
+        "lab/data",
+        "lab/assets/storage-replay.svg",
+        "lab/research/storage-weather.md"
+      ],
+      "demo": "https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/storage/"
+    },
+    {
+      "name": "natural-gas-weather-monitor",
+      "title": "Natural Gas Weather Monitor",
+      "description": "Compare archived NOAA GFS forecast runs, regional HDD/CDD revisions and common valid dates.",
+      "paths": [
+        "lab/weather"
+      ],
+      "demo": "https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/weather/"
+    },
+    {
+      "name": "henry-hub-futures-curve",
+      "title": "Henry Hub Futures Curve Explorer",
+      "description": "Analyze historical Henry Hub futures curves, delivery-month repricing, winter premiums and calendar spreads.",
+      "paths": [
+        "index.html",
+        "lab/research/curve-repricing.md"
+      ],
+      "demo": "https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/"
+    },
+    {
+      "name": "industrial-gas-cost-simulator",
+      "title": "Industrial Gas Cost Simulator",
+      "description": "Replay industrial winter gas costs and compare floating versus fixed-share procurement scenarios.",
+      "paths": [
+        "lab/industrial"
+      ],
+      "demo": "https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/industrial/"
+    },
+    {
+      "name": "natural-gas-data-api",
+      "title": "Natural Gas Data API",
+      "description": "Versioned static JSON endpoints for EIA storage, NOAA degree days and Henry Hub spot prices.",
+      "paths": [
+        "lab/api",
+        "lab/data"
+      ],
+      "demo": "https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/api/"
+    },
+    {
+      "name": "natural-gas-research-notes",
+      "title": "Natural Gas Research Notes",
+      "description": "Independent natural gas market studies, documented findings, methods and research limitations.",
+      "paths": [
+        "lab/research/storage-weather.md",
+        "lab/research/curve-repricing.md",
+        "lab/assets/storage-replay.svg",
+        "lab/data/README.md"
+      ],
+      "demo": "https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/research/"
+    }
+  ]
+}
