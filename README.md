@@ -1,10 +1,12 @@
-# Henry Hub Research | Natural Gas Research Lab
+# Henry Hub Research
+
+**Independent natural gas market research · Data analytics · Energy fundamentals**
 
 Independent research into the U.S. natural gas market, combining energy fundamentals, meteorology, quantitative analysis, industrial fuel economics and data engineering.
 
 The objective is to make the drivers of Henry Hub pricing understandable through interactive tools, transparent methods and reproducible evidence.
 
-**[Explore the research portfolio](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/) · [Data status](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/api/status.html) · [Technical documentation](lab/README.md)**
+**[Explore the research portfolio](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/) · [Research publications](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/research/) · [Data status](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/api/status.html) · [Technical documentation](lab/README.md)**
 
 ## Selected research projects
 
@@ -32,6 +34,17 @@ The recorded historical replay shows an approximately **32.8% reduction in mean 
 
 [Explore the storage dashboard](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/storage/) · [Replay results](lab/storage/backtest.csv) · [Forecast ledger](lab/storage/ledger/) · [Recorded metrics](lab/storage/state.json)
 
+![Historical storage model error compared with seasonal baseline by year](lab/assets/storage-replay.svg)
+
+### Research publications
+
+| Publication | Evidence |
+| :--- | :--- |
+| **001 — Does observed weather improve weekly natural gas storage estimates?** | [Full note](lab/research/storage-weather.md) · [Frozen replay data](https://github.com/NeuraX-JB/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/blob/ba3b94ba3a97c3262099da73a25a3a33f06c34ee/lab/storage/backtest.csv) |
+| **002 — One benchmark, different delivery months** | [Full note](lab/research/curve-repricing.md) · [Interactive curve comparison](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/?data=strips&view=curve&a=2026-06-30&b=2026-09-30&align=delivery) |
+
+[Read the research notes on the portfolio website](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/research/)
+
 ## Data and methodology
 
 Coverage in the 23 November 2026 API snapshot:
@@ -46,7 +59,7 @@ The shared pipeline records source URLs, retrieval times, coverage, units and da
 
 **Primary sources:** [EIA](https://www.eia.gov/naturalgas/), [NOAA Climate Prediction Center](https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/), [NOAA GFS archive](https://registry.opendata.aws/noaa-gfs-bdp-pds/), and the [U.S. Census Bureau](https://www.census.gov/). Selected longer futures-curve snapshots are reconstructed from SEC filings; the curve explorer identifies the distinct coverage and limitations of each archive.
 
-See the [data dictionary and provenance notes](lab/data/README.md), [source manifest](lab/data/manifest.json), and [API metadata](lab/api/v1/index.json) for details and updated coverage.
+See the [data use and attribution notes](DATA_SOURCES.md), the [data dictionary and provenance notes](lab/data/README.md), [source manifest](lab/data/manifest.json), and [API metadata](lab/api/v1/index.json) for details and updated coverage.
 
 ## Research workflow
 
