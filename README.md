@@ -16,16 +16,16 @@ The model uses observed, population-weighted U.S. heating and cooling degree day
 
 ## Explore the six projects
 
-Five tools run in this lab. The Natural Gas Pattern Lab runs locally in Python. Each project links to its source and instructions.
+Five tools and two Pattern Lab case studies run in the browser. The full Pattern Lab explorer runs locally in Python. Each project links to its source and instructions.
 
 | Research task | Use the lab tool | Inspect the project |
 | --- | --- | --- |
+| Inspect earlier instances of two Henry Hub setups and compare the price changes that followed. | [Natural Gas Pattern Lab case studies](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/patterns/) | [Full explorer, code and data](https://github.com/NeuraX-JB/natural-gas-pattern-lab) |
 | Estimate the coming EIA storage change and compare its weather adjustment with the seasonal median. | [Storage forecaster](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/storage/) | [Storage project](https://github.com/NeuraX-JB/henry-hub-storage-forecaster) · [Lab model](lab/storage/model.py) |
 | Compare two GFS forecast runs over their common valid dates and inspect a state's heating or cooling revision. | [Weather revision monitor](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/weather/) | [Weather project](https://github.com/NeuraX-JB/natural-gas-weather-monitor) · [Lab method](lab/weather/README.md) |
 | Follow the same delivery month across observation dates, or inspect the March–April spread. | [Original curve explorer](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/) | [Standalone curve project](https://github.com/NeuraX-JB/henry-hub-futures-curve) · [Original application](index.html) |
 | Compare fixed-share and variable fuel budgets for a U.S. plant across a historical winter. | [Industrial gas cost simulator](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/industrial/) | [Industrial project](https://github.com/NeuraX-JB/industrial-gas-cost-simulator) · [Lab calculations](lab/industrial/model.js) |
 | Join storage, observed weather and Henry Hub spot prices on a common weekly index. | [Data API explorer](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/api/) | [API project](https://github.com/NeuraX-JB/natural-gas-data-api) · [Lab API guide](lab/api/README.md) · [Notebook](lab/api/natural_gas_api.ipynb) |
-| Find earlier dates when a Henry Hub price sequence or combination of weather and storage conditions recurred, and compare what followed. | [Run the local pattern explorer](https://github.com/NeuraX-JB/natural-gas-pattern-lab#run-the-demo) | [Pattern Lab code and data](https://github.com/NeuraX-JB/natural-gas-pattern-lab) |
 
 ## Read the second study
 
