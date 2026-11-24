@@ -1,6 +1,6 @@
 # Natural Gas Research Lab
 
-Five interactive research projects for U.S. natural gas markets. [Open the public portfolio](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/).
+Six research projects for U.S. natural gas markets. [Open the public portfolio](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/).
 
 | Project | What to try |
 | --- | --- |
@@ -9,6 +9,7 @@ Five interactive research projects for U.S. natural gas markets. [Open the publi
 | [Industrial Gas Cost Simulator](./industrial/index.html) | Replay a November–March winter for a U.S. plant. Edit monthly consumption, the percentage fixed, local basis and delivery charges, then export both budgets. Archived forward quotes and assumed quotes are labeled. |
 | [Henry Hub Futures Curve Explorer](../index.html) | Compare two available dates by delivery month, inspect winter or March–April spreads and export prices. The four-contract EIA archive and the longer SEC-derived snapshots have distinct date coverage. |
 | [Natural Gas Data API](./api/index.html) | Fetch joined weekly storage, observed weather and Henry Hub spot quotes in one [JSON request](./api/v1/weekly.json). [Status](./api/status.html) · [Example notebook](./api/natural_gas_api.ipynb) · [Endpoint documentation](./api/README.md) |
+| [Natural Gas Pattern Lab](https://github.com/NeuraX-JB/natural-gas-pattern-lab) | Run the [local Python explorer](https://github.com/NeuraX-JB/natural-gas-pattern-lab#run-the-demo), select a price sequence or storage and weather conditions, and inspect every matching date and outcome. |
 
 ## Run locally
 

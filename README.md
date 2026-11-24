@@ -14,9 +14,9 @@ The model uses observed, population-weighted U.S. heating and cooling degree day
 
 ![Mean absolute storage error by calendar year for the seasonal median and weather-adjusted model, 2018 to partial 2026](lab/assets/storage-replay.svg)
 
-## Explore the five tools
+## Explore the six projects
 
-Each tool runs within this lab. The project repositories alongside them provide standalone editions with documented snapshots and their own validation instructions.
+Five tools run in this lab. The Natural Gas Pattern Lab runs locally in Python. Each project links to its source and instructions.
 
 | Research task | Use the lab tool | Inspect the project |
 | --- | --- | --- |
@@ -25,6 +25,7 @@ Each tool runs within this lab. The project repositories alongside them provide 
 | Follow the same delivery month across observation dates, or inspect the March–April spread. | [Original curve explorer](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/) | [Standalone curve project](https://github.com/NeuraX-JB/henry-hub-futures-curve) · [Original application](index.html) |
 | Compare fixed-share and variable fuel budgets for a U.S. plant across a historical winter. | [Industrial gas cost simulator](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/industrial/) | [Industrial project](https://github.com/NeuraX-JB/industrial-gas-cost-simulator) · [Lab calculations](lab/industrial/model.js) |
 | Join storage, observed weather and Henry Hub spot prices on a common weekly index. | [Data API explorer](https://neurax-jb.github.io/Henry-Hub-Futures-Curve-Explorer-How-the-Natural-Gas-Market-prices-winter/lab/api/) | [API project](https://github.com/NeuraX-JB/natural-gas-data-api) · [Lab API guide](lab/api/README.md) · [Notebook](lab/api/natural_gas_api.ipynb) |
+| Find earlier dates when a Henry Hub price sequence or combination of weather and storage conditions recurred, and compare what followed. | [Run the local pattern explorer](https://github.com/NeuraX-JB/natural-gas-pattern-lab#run-the-demo) | [Pattern Lab code and data](https://github.com/NeuraX-JB/natural-gas-pattern-lab) |
 
 ## Read the second study
 
